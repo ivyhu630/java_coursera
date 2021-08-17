@@ -32,6 +32,9 @@ public class WordLengths {
             int currentLength = length;
             char begChar = word.charAt(0);
             char endChar = word.charAt(length - 1);
+            if (Character.isDigit(begChar)) {
+                continue;
+            }
             if (!Character.isLetter(begChar)) {
                 currentLength--;
             }
@@ -58,7 +61,7 @@ public class WordLengths {
 
     public void testCountWordLengths() {
         FileResource fr = new FileResource();
-        int[] counts = new int[31];
+        int[] counts = new int[100];
         countWordLengths(fr, counts);
         System.out.println(Arrays.toString(counts));
         System.out.println(indexOfMax(counts));
