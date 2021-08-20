@@ -39,19 +39,20 @@ public class CharactersInPlay {
     }
 
     public void charactersWithNumParts(int num1, int num2) {
-        for (int k1 = num1; k1 <= num2; k1++) {
-            String name = allNames.get(k1);
-            System.out.println(name);
+        for (int i = 0; i < allNames.size(); i++) {
+            if (freq.get(i) >= num1 & freq.get(i) < num2) {
+                System.out.println(allNames.get(i) + " frequency: " + freq.get(i));
+            }
         }
     }
 
     public void tester() {
         findAllCharacters();
-        for (int i = 0; i < allNames.size(); i++) {
-            if (freq.get(i) > 5) {
-                System.out.println(allNames.get(i) + " frequency: " + freq.get(i));
-            }
-        }
+//        for (int i = 0; i < allNames.size(); i++) {
+//            if (freq.get(i) > 5) {
+//                System.out.println(allNames.get(i) + " frequency: " + freq.get(i));
+//            }
+//        }
         charactersWithNumParts(10, 15);
     }
 

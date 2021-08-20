@@ -11,18 +11,18 @@ public class WordsInFiles {
     private HashMap<String, ArrayList<String>> map;
 
     public WordsInFiles() {
-        map = new HashMap<String, ArrayList<String>>();
+        map = new HashMap<>();
     }
 
     private void addWordsFromFile(File f) {
         FileResource fr = new FileResource(f);
         for (String word : fr.words()) {
-            if (!map.containsKey(word.toLowerCase())) {
+            if (!map.containsKey(word)) {
                 ArrayList<String> fileName = new ArrayList<>();
                 fileName.add(f.getName());
-                map.put(word.toLowerCase(), fileName);
-            } else {
-                map.get(word.toLowerCase()).add(f.getName());
+                map.put(word, fileName);
+            } else if (!map.get(word).contains(f.getName())) {
+                map.get(word).add(f.getName());
             }
         }
     }
@@ -63,14 +63,17 @@ public class WordsInFiles {
     public void tester() {
         buildWordFileMap();
         int maxNumber = maxNumber();
-        System.out.print("maxnumber " + maxNumber + " which are: ");
+        System.out.print("maxNumber " + maxNumber + " which are: ");
         System.out.println(wordsInNumFiles(maxNumber).toString());
-        int i = 0;
-        ArrayList<String> filenames = wordsInNumFiles(maxNumber);
-        while (filenames.size() > i) {
-            printFilesIn(filenames.get(i));
-            i++;
-        }
+        System.out.println(wordsInNumFiles(7).size());
+        System.out.println(map.get("laid").toString());
+        System.out.println(map.get("tree").toString());
+//        int i = 0;
+//        ArrayList<String> filenames = wordsInNumFiles(maxNumber);
+//        while (filenames.size() > i) {
+//            printFilesIn(filenames.get(i));
+//            i++;
+//        }
     }
 
     public static void main(String[] args) {

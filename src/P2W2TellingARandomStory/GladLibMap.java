@@ -3,7 +3,6 @@ package P2W2TellingARandomStory;
 import edu.duke.FileResource;
 import edu.duke.URLResource;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -11,21 +10,22 @@ import java.util.Random;
 public class GladLibMap {
     private ArrayList<String> usedWordList;
     private HashMap<String, ArrayList<String>> myMap;
-    private Random myRandom;
+    private final Random myRandom;
 
     private static String dataSourceURL = "http://dukelearntoprogram.com/course3/data";
     private static String dataSourceDirectory = "data";
 
     public GladLibMap() {
+        myMap = new HashMap<>();
         initializeFromSource(dataSourceDirectory);
         myRandom = new Random();
-        myMap = new HashMap<String, ArrayList<String>>();
     }
 
-    public GladLibMap(String source) {
-        initializeFromSource(source);
-        myRandom = new Random();
-    }
+//    public GladLibMap(String source) {
+//        initializeFromSource(source);
+//        myRandom = new Random();
+//        myMap = new HashMap<>();
+//    }
 
     private void initializeFromSource(String source) {
         String[] category = {"adjective", "noun", "color", "country", "name", "animal", "timeframe", "verb", "fruit"};
@@ -33,7 +33,7 @@ public class GladLibMap {
             ArrayList<String> list = readIt(source + "/" + s + ".txt");
             myMap.put(s, list);
         }
-        usedWordList = new ArrayList<String>();
+        usedWordList = new ArrayList<>();
     }
 
     private String randomFrom(ArrayList<String> source) {
@@ -100,7 +100,7 @@ public class GladLibMap {
     }
 
     private ArrayList<String> readIt(String source) {
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
         if (source.startsWith("http")) {
             URLResource resource = new URLResource(source);
             for (String line : resource.lines()) {
@@ -125,5 +125,6 @@ public class GladLibMap {
     public static void main(String[] args) {
         GladLibMap g = new GladLibMap();
         g.makeStory();
+//        ArrayList<String> list = readIt("data" + "/" + "noun" + ".txt");
     }
 }

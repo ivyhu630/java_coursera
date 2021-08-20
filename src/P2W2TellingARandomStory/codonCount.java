@@ -61,6 +61,7 @@ public class codonCount {
 
     public static void main(String[] args) {
         codonCount c = new codonCount();
-        c.tester(2, 1, 5);
+        c.tester(0, 7, 7);
+//        c.tester(2, 6, 6);
     }
 }
