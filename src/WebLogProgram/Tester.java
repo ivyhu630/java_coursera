@@ -54,17 +54,17 @@ public class Tester {
 //        t.testUniqueIp();
         LogAnalyzer lg = new LogAnalyzer();
         lg.readFile();
-//        System.out.println(lg.countUniqueIPsInRange(300, 399));
-//        System.out.println(lg.uniqueIPVisitsOnDay("Mar 17").size());
-//        lg.printAllHigherThanNum(400);
-//        t.testCountAnalyzer();
+//        System.out.println(lg.countUniqueIPsInRange(400, 499));
+//        System.out.println(lg.uniqueIPVisitsOnDay("Sep 24").size());
+////        lg.printAllHigherThanNum(400);
+////        t.testCountAnalyzer();
         HashMap<String, Integer> count = lg.countVisitsPerIP();
         System.out.println("most visit IP counts: " + lg.mostNumberVisitsByIP(count));
         System.out.println("most visit IPs: " + lg.iPsMostVisits(count).toString());
-//        HashMap<String, ArrayList<String>> map = lg.iPsForDays();
-//        for (String date : map.keySet()) {
-//            System.out.println(date + ": " + map.get(date).toString());
-//        }
+        HashMap<String, ArrayList<String>> map = lg.iPsForDays();
+        for (String date : map.keySet()) {
+            System.out.println(date + ": " + map.get(date).toString());
+        }
 
     }
 

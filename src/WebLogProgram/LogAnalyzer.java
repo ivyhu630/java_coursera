@@ -251,13 +251,14 @@ public class LogAnalyzer {
     public static void main(String[] args) {
         LogAnalyzer lg = new LogAnalyzer();
         lg.readFile();
+//        System.out.println(lg.countUniqueIPs());
         HashMap<String, ArrayList<String>> map = lg.iPsForDays();
         for (String date : map.keySet()) {
             System.out.println(date + ": " + map.get(date).toString());
             System.out.println(lg.dayWithMostIPVisits(map));
 
         }
-        System.out.println(lg.iPsWithMostVisitsOnDay(map, "Mar 17").toString());
+        System.out.println(lg.iPsWithMostVisitsOnDay(map, "Sep 30").toString());
     }
 }
 
